@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 const Form = ({initalTodo, handleSubmit, buttonLabel, history}) => {
 
@@ -13,11 +13,22 @@ const Form = ({initalTodo, handleSubmit, buttonLabel, history}) => {
     event.preventDefault()
   }
 
-  return <form onSubmit={handleSubmit} >
+  return <form onSubmit={handleSubmission} >
     <input
     type="text"
     onChange={handleChange}
-    v
+    value={formData.subject}
+    name="subject"
+    />
+     <input
+    type="text"
+    onChange={handleChange}
+    value={formData.details}
+    name="details"
+    />
+    <input
+    type="submit"
+    value={buttonLabel}
     />
     </form>
 };
