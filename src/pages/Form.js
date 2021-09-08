@@ -1,36 +1,40 @@
 import React, {useState} from "react";
 
-const Form = ({initalTodo, handleSubmit, buttonLabel, history}) => {
+const Form = ({initialTodo, handleSubmit, buttonLabel, history}) => {
 
-  // The form data state
-  const [formData, setFormData] = useState(initalTodo)
+  /////////////////////////
+  // THe Form Data State
+  //////////////////////////
+  const [formData, setFormData] = useState(initialTodo)
 
-  // functions
+  /////////////////////////
+  // Functions
+  /////////////////////////
   const handleChange = (event) => {
     setFormData({...formData, [event.target.name]: event.target.value})
   }
+
   const handleSubmission = (event) => {
     event.preventDefault()
+    handleSubmit(formData)
+    history.push("/")
   }
 
-  return <form onSubmit={handleSubmission} >
+ 
+  return <form onSubmit={handleSubmission}>
     <input
-    type="text"
-    onChange={handleChange}
-    value={formData.subject}
-    name="subject"
-    />
-     <input
-    type="text"
-    onChange={handleChange}
-    value={formData.details}
-    name="details"
-    />
+      type="text"
+      onChange={handleChange}
+      value={formData.subject}
+      name="subject"
+      />
     <input
-    type="submit"
-    value={buttonLabel}
-    />
-    </form>
+      type="text"
+      onChange={handleChange}
+      value={formData.details}
+      name="details"/>
+      <input type="submit" value={buttonLabel}/>
+  </form>;
 };
 
 export default Form;
